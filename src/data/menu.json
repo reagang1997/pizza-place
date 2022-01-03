@@ -1,0 +1,54 @@
+{
+    "regular": [
+        {
+            "name": "Pepperoni Lovers",
+            "description": "Scratch-made Marinara, Pepperoni on top of Extra Whole-milk Mozzarella Cheese on top of more Pepperoni"
+        },
+        {
+            "name": "Margherita",
+            "description": "Scratch-made Marinara, Extra Virgin Olive Oil Basted Crust, Roma Tomato, Italian Seasoning, Fresh Basil, Garlic, Whole-milk Mozzarella. Finished with imported Shaved Parmesan Cheese"
+        },
+        {
+            "name": "Supreme",
+            "description": "Scratch-made Marinara, Pepperoni, Italian Sausage, Mushroom, Red Onion, Bell Pepper, Black Olive, Whole-milk Mozzarella"
+        },
+        {
+            "name": "Meat-lovers",
+            "description": "Scratch-made Marinara, Pepperoni, Canadian Bacon, Beef, Italian Sausage, Breakfast Bacon, Whole-milk Mozzarella"
+        },
+        {
+            "name": "Meatball Special",
+            "description": "Scratch-made Marinara, Sliced Meatball, Bell Pepper, Red Onion, and Mozzarella. Finished with Imported Shaved Parmesan Cheese"
+        },
+        {
+            "name": "Veggie",
+            "description": "Scratch-made Marinara, Mushroom, Roma Tomato, Green Olive, Black Olive, Red Onion, Bell Pepper, Whole-milk Mozzarella"
+        },
+        {
+            "name": "Bacon Cheese Burger",
+            "description": "Scratch-made Marinara,Beef, Bacon, Red Onion  Whole-milk Mozzarella and Cheddar Cheese *For a little more kick, try adding Jalapeños!*"
+        },
+        {
+            "name": "PIZZA ZEN",
+            "description": "Scratch-made Marinara, Bell Pepper, Italian Sausage, Red Pepper flakes, Whole-milk Mozzarella, finished with LOCAL TEXAS HONEY!"
+        }
+    ],
+    "premium": [
+        {
+            "name": "Mediterranean",
+            "description": "Scratch-made Marinara, Spinach, Red Onion, Black Olive, Roma Tomato, Artichoke Hearts, Fresh Garlic, Whole-milk Mozzarella and Feta Cheese"
+        },
+        {
+            "name": "Chicken Pesto",
+            "description": "Basil Pesto sauce, Chicken, Roma Tomato, Red Onion, Whole-milk Mozzarella"
+        },
+        {
+            "name": "Chicken BBQ",
+            "description": "BBQ sauce base, Chicken, Red Onion, Jalapeños, Whole-milk Mozzarella and Cheddar Cheese"
+        },
+        {
+            "name": "Frito Pie Pizza",
+            "description": "HEB Brand Chili base, Red Onions, Jalapenos,Whole-milk Mozzarella and Cheddar Cheese. Finished with Fritos! A SHOP FAVORITE!"
+        }
+    ]
+}
