@@ -26,7 +26,6 @@ const NavBar = ({ }) => {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [showDrawer, setDrawer] = useState(false)
     const navigate = useNavigate()
-    const hash = hashHis
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
