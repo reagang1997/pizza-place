@@ -6,7 +6,8 @@ import NavBar from './components/NavBar/NavBar';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 
 import Menu from './pages/Menu/Menu';
@@ -33,14 +34,14 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path='/' element={<About />}/>
             <Route path='/menu' element={<Menu />} />
             <Route path='/about' element={<About />} />
             <Route path='/order' element={<Order />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </div>
   );
