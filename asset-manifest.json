@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pizza-place/static/css/main.9b2f7d44.css",
-    "main.js": "/pizza-place/static/js/main.c10f55f2.js",
+    "main.js": "/pizza-place/static/js/main.565b02f3.js",
     "static/js/787.f5061019.chunk.js": "/pizza-place/static/js/787.f5061019.chunk.js",
     "static/media/pizza.jpg": "/pizza-place/static/media/pizza.2d8b2bbc0baed3234e3b.jpg",
     "static/media/pep.jpg": "/pizza-place/static/media/pep.b84ef1fd7791d1ca7b14.jpg",
@@ -9,11 +9,11 @@
     "static/media/logo.png": "/pizza-place/static/media/logo.815a9881d16c8116710a.png",
     "index.html": "/pizza-place/index.html",
     "main.9b2f7d44.css.map": "/pizza-place/static/css/main.9b2f7d44.css.map",
-    "main.c10f55f2.js.map": "/pizza-place/static/js/main.c10f55f2.js.map",
+    "main.565b02f3.js.map": "/pizza-place/static/js/main.565b02f3.js.map",
     "787.f5061019.chunk.js.map": "/pizza-place/static/js/787.f5061019.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9b2f7d44.css",
-    "static/js/main.c10f55f2.js"
+    "static/js/main.565b02f3.js"
   ]
 }
