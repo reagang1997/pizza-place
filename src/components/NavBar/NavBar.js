@@ -26,6 +26,7 @@ const NavBar = ({ }) => {
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [showDrawer, setDrawer] = useState(false)
     const navigate = useNavigate()
+    const hash = hashHis
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -122,9 +123,9 @@ const NavBar = ({ }) => {
                         style={{width: '150px'}}
                     >
                        <div style={{width: '150px'}}>
-                           <MenuItem>About Us</MenuItem>
-                           <MenuItem>Menu</MenuItem>
-                           <MenuItem style={{color: '#640000'}}>Order Now</MenuItem>
+                           <MenuItem onClick={e => navigate('/about')}>About Us</MenuItem>
+                           <MenuItem onClick={e => navigate('/menu')}>Menu</MenuItem>
+                           <MenuItem onClick={e => navigate('/order')} style={{color: '#640000'}}>Order Now</MenuItem>
 
                        </div>
                     </Drawer>
