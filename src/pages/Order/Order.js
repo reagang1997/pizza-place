@@ -63,7 +63,7 @@ const Order = () => {
                     </Grid>
                 </Grid>
             </div>
-            <Box sx={{ '& > :not(style)': { m: 1 } }}>
+            <Box sx={{ display: {sm: 'block', md: 'none'}}}>
                 <Fab size="large" color="secondary" aria-label="add" style={style} onClick={scroll}>
                     <ShoppingCartIcon />
                 </Fab>
