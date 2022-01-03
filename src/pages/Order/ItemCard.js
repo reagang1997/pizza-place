@@ -70,8 +70,8 @@ const ItemCard = ({ item, cart, setCart, craft }) => {
 
     return (
         <Box
-            style={{ margin: '10px', border: '2px solid black', borderRadius: '10px', padding: '5px', position: 'relative', height: '455px' }}
-            sx={{ width: { md: '233px', xs: 'fit-content' } }}
+            style={{ margin: '10px', border: '2px solid black', borderRadius: '10px', padding: '5px', position: 'relative' }}
+            sx={{ width: { md: '233px', xs: 'fit-content' }, height: {md: '455px', xs: '260px'} }}
         >
             <Typography variant='h5' align='center'>{item.name.toUpperCase()}</Typography>
             <Box
