@@ -73,7 +73,6 @@ const Cart = ({ mycart }) => {
                 id="coupon"
                 label="COUPON CODE"
                 name="coupon"
-                autoFocus
                 value={tmpCode}
                 onChange={checkCode}
                 color={foundCode.found ? 'success' : ''}
