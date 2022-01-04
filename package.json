@@ -8,17 +8,16 @@
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
+    "if-env": "^1.0.4",
     "mongoose": "^6.1.5",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0",
-    "if-env": "^1.0.4"
+    "passport-local": "^1.0.0"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install", 
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
