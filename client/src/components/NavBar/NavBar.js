@@ -130,18 +130,21 @@ const NavBar = ({ }) => {
 
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: { md: '55%' } }}>
-                        {pages.map((page) => (
+                        {pages.map((page) => {
+                            let path;
+                            if(page === 'HOME') {path = '/'} else{path =`/${page.split(' ')[0].toLowerCase()}`}
+                            return (
                             <Button
                                 size='large'
                                 key={page}
                                 to={`/${page}`}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                                 style={page === 'ORDER NOW' ? { backgroundColor: '#640000', margin: '20px' } : { margin: '20px' }}
-                                onClick={e => navigate(`/${page.split(' ')[0].toLowerCase()}`)}
+                                onClick={e => navigate(path)}
                             >
                                 {page}
                             </Button>
-                        ))}
+                        )})}
 
                     </Box>
                     <Drawer
