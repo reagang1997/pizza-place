@@ -154,8 +154,10 @@ const NavBar = ({ }) => {
                             {/* <MenuItem onClick={e => navigate('/about')}>About Us</MenuItem> */}
                             {pages.map(page => {
                                 console.log(page)
+                                let path;
+                                if(page === 'HOME') {path = '/'} else{path =`/${page.split(' ')[0].toLowerCase()}`}
                                 return (
-                                    <MenuItem  style={page === 'ORDER NOW' ? { backgroundColor: '#640000', margin: '5px', color: 'white', borderRadius: '5px' } : { margin: '5px' }} onClick={e => navigate(`/${page.split(' ')[0].toLowerCase()}`)}>{page}</MenuItem>
+                                    <MenuItem  style={page === 'ORDER NOW' ? { backgroundColor: '#640000', margin: '5px', color: 'white', borderRadius: '5px' } : { margin: '5px' }} onClick={e => navigate(path)}>{page}</MenuItem>
                                 )
                             })}
                            
