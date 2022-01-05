@@ -36,7 +36,14 @@ const Signup = () => {
             const signedUp = await axios.post('/api/user/', user);
             localStorage.setItem('user', JSON.stringify(user));
             if (signedUp.status === 200) {
-                navigate('/')
+                if (JSON.parse(localStorage.getItem('cart'))) {
+                    console.log('hit')
+                    navigate('/order')
+                }
+                else {
+
+                    navigate('/')
+                }
 
             }
         }
@@ -46,8 +53,14 @@ const Signup = () => {
                 password: data.get('password'),
             };
             const loggedIn = await axios.post('/api/user/login', user)
-            if(loggedIn.status === 200){
-                navigate('/')
+            if (loggedIn.status === 200) {
+                if (JSON.parse(localStorage.getItem('cart'))) {
+                    navigate('/order')
+                }
+                else {
+
+                    navigate('/')
+                }
             }
 
         }

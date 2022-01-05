@@ -17,8 +17,8 @@ const Order = () => {
     const myRef = useRef(null)
     const scroll = () => myRef.current.scrollIntoView();
     useEffect(() => {
-
-    }, [cart.length])
+        
+    }, [])
 
     const style = {
         margin: 0,
@@ -57,7 +57,7 @@ const Order = () => {
                     <Grid item xs={12} md={4}>
                         <div ref={myRef} style={{ width: '75%', height: '500px', margin: 'auto', marginTop: '20px' }}>
                             <Typography variant='h4' align='center'>MY ITEMS</Typography>
-                            <Cart mycart={cart} />
+                            <Cart mycart={cart} setMycart={setCart}/>
 
                         </div>
                     </Grid>

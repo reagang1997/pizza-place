@@ -1,7 +1,11 @@
 import { Button, Typography, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-
-const Cart = ({ mycart }) => {
+import axios from "axios";
+import NotLoggedIn from "./NotLoggedIn";
+import GuestCheckOut from "./GuestCheckOut";
+import UserCheckout from "./UserCheckout";
+import {useNavigate} from 'react-router'
+const Cart = ({ mycart, setMycart }) => {
 
     const [lCart, setCart] = useState([]);
     const [tax, setTax] = useState(0)
@@ -12,6 +16,15 @@ const Cart = ({ mycart }) => {
     const [couponApplied, setApplied] = useState(false);
     const [itemTotal, setITotal] = useState(0);
     const [savings, setSavings] = useState(0)
+    const [notLoggedIn, setNotLoggedIn] = useState(false);
+    const [guestCheckout, setguestCheckout] = useState(false);
+    const [userCheckout, setUserCheckout] = useState(false);
+    const [points, setPoints] = useState(0);
+    const [guest, setGuest] = useState({firstName: '', lastName: ''})
+    const [user, setUser] = useState({})
+    const [placeOrder, setPlaceOrder] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         let tmpITotal = mycart.price;
@@ -24,6 +37,25 @@ const Cart = ({ mycart }) => {
         let tmpTotal = (+tmpITotal + +tmpTax).toFixed(2)
         setTotal(tmpTotal)
     }, [mycart])
+
+    useEffect(() => {
+        console.log(mycart)
+    }, [guestCheckout])
+
+    useEffect(() => {
+        if(placeOrder){
+            sendOrder()
+        }
+    }, [placeOrder])
+
+    useEffect(() => {
+        const cart = JSON.parse(localStorage.getItem('cart'))
+        if(cart){
+            setMycart(cart);
+            setUserCheckout(true);
+            checkOut();
+        }
+    }, [])
 
     const checkCode = (e) => {
         setTmpCode(e.target.value.toUpperCase())
@@ -56,15 +88,59 @@ const Cart = ({ mycart }) => {
         }
         return <h1>{total}</h1>
     }
+
+    const checkOut = async () => {
+        //check if loggedIn
+        const {data} = await axios.get('/api/user/loggedIn');
+        if(data.error){
+            console.log('hit')
+            setguestCheckout(true);
+        }
+        else{
+            console.log(data)
+            setUser(data);
+            setUserCheckout(true)
+        }
+    }
+
+    const sendOrder = async () => {
+        if(guestCheckout){
+            const order = {
+                items: mycart.items,
+                price: total,
+                firstName: guest.firstName,
+                lastName: guest.lastName
+            }
+            const ordered = await axios.post('/api/order/guest', order);
+            console.log(order)
+        }
+        else if(userCheckout){
+            
+            const order = {
+                items: mycart.items,
+                price: total,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                user: user._id,
+                points: points
+            }
+            console.log(order);
+            const ordered = await axios.post('/api/order/user', order)
+            if(ordered.status === 200){
+                localStorage.clear();
+                navigate('/account')
+            }
+        }
+    }
     return (
         <div>
             {mycart.items.map(item =>
                 <Typography variant='h5' align="center">
                     {item.qty}X {item.size} {item.name.toUpperCase()}
                 </Typography>)}
+            <Typography variant='h5' align='center'>PIZZA: ${itemTotal}</Typography>
             {foundCode.found ? <Typography variant='h5' align='center'>COUPON: -${savings}</Typography>
                 : <></>}
-            <Typography variant='h5' align='center'>PIZZA: ${itemTotal}</Typography>
             <Typography variant='h5' align='center'>TAX: ${tax}</Typography>
             <Typography variant='h3' align='center'>TOTAL: ${total}</Typography>
             <TextField
@@ -79,7 +155,9 @@ const Cart = ({ mycart }) => {
                 focused={foundCode.found ? 'true' : ''}
             />
             <br />
-            <Button variant="contained" style={{ backgroundColor: '#640000' }}>CHECK OUT</Button>
+            <Button variant="contained" style={{ backgroundColor: '#640000' }} onClick={checkOut}>CHECK OUT</Button>
+            {guestCheckout? <GuestCheckOut guest={guest} setGuest={setGuest} setPlaceOrder={setPlaceOrder} mycart={mycart}/> : <></>}
+            {userCheckout? <UserCheckout setPlaceOrder={setPlaceOrder} mycart={mycart} setPoints={setPoints}/> : <></>}
         </div>
     )
 }

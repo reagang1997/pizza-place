@@ -43,7 +43,7 @@ function App() {
             <Route path='/menu' element={<Menu />} />
             {/* <Route path='/about' element={<About />} /> */}
             <Route path='/order' element={<Order />} />
-            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/login' element={<Signup/>}/>
             <Route path='/account' element={<Account/>}/>
           </Routes>
         </HashRouter>

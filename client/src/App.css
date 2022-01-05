@@ -1,7 +1,27 @@
-
-
 /* AIzaSyBSTR27VmrxNOy6oVGBg7SN41DthYR9lTs */
 
+
+.darken {
+
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+#join-rewards {
+  margin-top: -20px;
+  margin-left: -130px;
+}
+
+#special {
+  width: fit-content;
+  margin: auto;
+  margin-top: 65px;
+  margin-left: 390px;
+  position: relative;
+  text-align: center;
+}
 
 .App {
   text-align: center;
@@ -12,7 +32,12 @@
   pointer-events: none;
 }
 
-.logo{
+.myBar{
+  width: 75%;
+  margin: auto;
+}
+
+.logo {
   height: 200px;
   margin-top: 10px;
   flex-grow: 1;
@@ -44,39 +69,79 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.special{
-  height: 500px;
+.special {
+  height: 400px;
   border-radius: 10px;
 }
 
-.home-pizza{
+.home-pizza {
   height: 350px;
 }
 
-.pizza-container{
+.pizza-container {
   width: fit-content;
   margin: auto;
   margin-top: 50px;
   margin-left: -150px;
 }
 
+.join-now{
+  background-color: black;
+  margin-right: 100px;
+  
+}
+
+.orders-container{
+  height: auto;
+  max-height: 600px;
+  overflow-y: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 99%;
+  margin: auto;
+  margin-left: 25px;
+  padding: 10px
+}
+
 @media only screen and (max-width: 800px) {
-  .special{
+  .special {
     width: 100%;
     height: 300px;
     border-radius: 0;
   }
 
-  .home-pizza{
+  #special {
+    width: 100%;
+    margin: 0;
+    margin-top: 50px;
+    height: 300px;
+    position: relative;
+    text-align: center;
+  }
+
+  #join-rewards {
+    margin-top: -50px;
+    margin-left: -10px;
+    height: 385px;
+  }
+
+  .darken {
+    height: 300px;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .home-pizza {
     height: 300px;
   }
 
-  .pizza-container{
+  .pizza-container {
     margin-left: 0;
     padding-bottom: 250px;
   }

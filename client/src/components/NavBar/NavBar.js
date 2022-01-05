@@ -21,29 +21,33 @@ import axios from 'axios'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const NavBar = ({ }) => {
-    
+
     const [showMenu, setShowMenu] = useState(false)
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [showDrawer, setDrawer] = useState(false)
-    const [pages, setPages] = useState(['Menu', 'Order Now'])
+    const [pages, setPages] = useState(['HOME','MENU'])
     const [loggedIn, setLoggedIn] = useState(false)
     const navigate = useNavigate()
 
     const [user, setUser] = useState({});
 
     useEffect(() => {
-       checkForUser();
+        checkForUser();
     }, [])
 
     const checkForUser = async () => {
         const tmpUser = await axios.get('/api/user/loggedIn');
         console.log(tmpUser)
-        if(tmpUser.data.firstName){
+        if (tmpUser.data.firstName) {
             console.log('hit')
+            setPages([...pages, 'ACCOUNT', 'ORDER NOW']);
             setUser(tmpUser.data);
-            setPages([...pages, 'ACCOUNT']);
             setLoggedIn(true);
+
+        }
+        else {
+            setPages([...pages, 'LOGIN', 'ORDER NOW']);
 
         }
     }
@@ -132,13 +136,13 @@ const NavBar = ({ }) => {
                                 key={page}
                                 to={`/${page}`}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
-                                style={page === 'Order Now' ? { backgroundColor: '#640000', margin: '20px' } : { margin: '20px' }}
+                                style={page === 'ORDER NOW' ? { backgroundColor: '#640000', margin: '20px' } : { margin: '20px' }}
                                 onClick={e => navigate(`/${page.split(' ')[0].toLowerCase()}`)}
                             >
                                 {page}
                             </Button>
                         ))}
-                        
+
                     </Box>
                     <Drawer
                         anchor='left'
@@ -148,8 +152,13 @@ const NavBar = ({ }) => {
                     >
                         <div style={{ width: '150px' }}>
                             {/* <MenuItem onClick={e => navigate('/about')}>About Us</MenuItem> */}
-                            <MenuItem onClick={e => navigate('/menu')}>Menu</MenuItem>
-                            <MenuItem onClick={e => navigate('/order')} style={{ color: '#640000' }}>Order Now</MenuItem>
+                            {pages.map(page => {
+                                console.log(page)
+                                return (
+                                    <MenuItem  style={page === 'ORDER NOW' ? { backgroundColor: '#640000', margin: '5px', color: 'white', borderRadius: '5px' } : { margin: '5px' }} onClick={e => navigate(`/${page.split(' ')[0].toLowerCase()}`)}>{page}</MenuItem>
+                                )
+                            })}
+                           
 
                         </div>
                     </Drawer>
