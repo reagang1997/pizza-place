@@ -7,13 +7,18 @@ const passport = require('../../config/passport');
 //create a new user
 router.post('/api/user', async (req, res) => {
     const newUser = req.body;
+    console.log('signup')
     const newDBUser = await db.User.create(newUser);
+    newDBUser.hashed = true;
+    newDBUser.save();
     req.session.save(() => {
         req.session.userId = newUser.id;
         req.session.displayName = newUser.displayName;
     });
     res.send(newDBUser);
 });
+
+
 
 router.put('/api/user/update/:id', async (req, res) => {
     const updated = await db.User.findByIdAndUpdate(req.body._id, req.body)

@@ -38,6 +38,9 @@ const Account = () => {
 
     const getPointsValue = () => {
         console.log(user.points)
+        if(user.points < 100){
+            setValue(user.points)
+        }
         if (user.points >= 100 && user.points <= 200) {
             console.log(user.points - 100)
             setValue(user.points - 100)
@@ -69,7 +72,7 @@ const Account = () => {
                 </Grid>
                 <Grid item md={4}>
                     <Box sx={{marginLeft: {xs: '53px'}, marginTop: {xs: '20px'}}}>
-                        {value > 0 ? <Points pts={user.points} value={value} /> : <>{getPointsValue()}</>}
+                        {value >= 0 ? <Points pts={user.points} value={value} /> : <>{getPointsValue()}</>}
                     </Box>
                 </Grid>
                 <Grid item md={2} />

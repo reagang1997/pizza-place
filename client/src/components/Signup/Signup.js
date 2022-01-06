@@ -27,13 +27,16 @@ const Signup = () => {
         const data = new FormData(event.currentTarget);
         // eslint-disable-next-line no-console
         if (signup) {
-            const user = {
+            let user = {
                 email: data.get('email'),
                 password: data.get('password'),
                 firstName: data.get('first-name'),
                 lastName: data.get('last-name'),
             };
             const signedUp = await axios.post('/api/user/', user);
+
+            user = {email: user.email, password: user.password}
+            const loggedIn = await axios.post('/api/user/login', user)
             localStorage.setItem('user', JSON.stringify(user));
             if (signedUp.status === 200) {
                 if (JSON.parse(localStorage.getItem('cart'))) {

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
     firstName: {type: String, required: true},
+    hashed: {type: Boolean, default: false},
     lastName: {type: String, required: true},
     email: {type: String, required: true },
     password: { type: String, required: true },
@@ -29,6 +30,11 @@ userSchema.pre('save', function (next){
         next();
     }else{
         console.log('Password Saved')
+        this.password = this.hashPassword(this.password);
+        next();
+    }
+
+    if(!this.hashed){
         this.password = this.hashPassword(this.password);
         next();
     }
